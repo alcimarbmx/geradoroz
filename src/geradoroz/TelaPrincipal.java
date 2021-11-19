@@ -6,6 +6,7 @@
 package geradoroz;
 
 import java.awt.Desktop;
+import java.awt.Toolkit;
 import java.awt.print.PrinterJob;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -49,7 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public TelaPrincipal() {
         initComponents();
-        //setIcon();
+        setIcon();
         ListaImpressora();
         data.SO_gerada("MM");
     }
@@ -75,7 +76,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // "\n\r 01234567890123456789012345678901234567890123456789"
         String dataHoje = "___/___/______";
         if (jcb_hoje.isSelected()) {
-            dataHoje = data.SO_gerada("dd");
+            dataHoje = data.SO_gerada("dd/MM/yyyy");
         }
         String os
                 = "\n\r Gerado em " + data.SO_gerada() + " by AlciTech   "
@@ -85,11 +86,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 //+ "\n\r -----------------------------------------------"
                 //+ "\n\r _______________________________________________"
                 + "\n\r"
-                + "\n\r Cliente:" + cliente
+                + "\n\r Cliente: " + cliente
                 + "\n\r Endereco: " + endereco + " Cidade: " + cidade
                 + "\n\r Inicio: " + dataHoje + " Hora: ____:____ "
                 + "\n\r Fim: " + dataHoje + " Hora: ____:____ "
-                + "\n\r Tecnico:" + tecnico
+                + "\n\r Tecnico: " + tecnico
                 + "\n\r Motivo: " + motivo
                 + "\n\r                 SOBRE O SERVICO"
                 + "\n\r _______________________________________________"
@@ -154,7 +155,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, printJob.getPrintService());
             printJob.print(texto, printerAttributes);
-            //Desktop.getDesktop().print(new File("C:\\Users\\alcimar\\Desktop\\tarefas"+os+".pdf"));
+            
         } catch (PrintException ex) {
             JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage());
         }
@@ -356,7 +357,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -382,7 +383,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jcbImpressora, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(103, 103, 103)
                         .addComponent(jButton2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,7 +395,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -403,8 +403,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                        .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,6 +458,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -601,10 +602,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
-//    private void setIcon() {
-//        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Capturar.jpg").getFile()));
-//        //setIconImage(new ImageIcon(getClass().getResource("Capturar.jpg")));
-//        //new javax.swing.ImageIcon(getClass().getResource());
-//        
-//    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("geradoroz_1.png")));        
+    }
 }
